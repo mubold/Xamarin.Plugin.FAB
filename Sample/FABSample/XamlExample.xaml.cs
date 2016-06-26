@@ -31,6 +31,10 @@ namespace FABSample
                 this.disabledBtn.Text = this.fabBtn.IsEnabled ? "Disable" : "Enable";
                 this.fabBtn.IsEnabled = !this.fabBtn.IsEnabled;
             }
+            else if (sender == this.FindByName<Button>("noShadowBtn"))
+            {
+                this.fabBtn.HasShadow = !this.fabBtn.HasShadow;
+            }
         }
 
         void Handle_FabClicked(object sender, System.EventArgs e)

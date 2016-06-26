@@ -10,8 +10,8 @@ namespace FABSample
         {
             var tabbed = new TabbedPage();
 
-            tabbed.Children.Add(new NavigationPage(new CSharpExample()) { Title = "C#" });
-            tabbed.Children.Add(new NavigationPage(new XamlExample()) { Title = "Xaml" });
+            tabbed.Children.Add(new NavigationPage(new CSharpExample()) { Icon = "csharp.png" });
+            tabbed.Children.Add(new NavigationPage(new XamlExample()) { Icon = "xml.png" });
 
             this.MainPage = tabbed;
         }

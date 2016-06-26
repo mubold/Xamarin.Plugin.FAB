@@ -27,6 +27,10 @@
 					x:Name="disabledBtn"
 					Text="Disabled"
 					Clicked="Handle_Clicked" />
+				<Button
+					x:Name="noShadowBtn"
+					Text="Change Shadow"
+					Clicked="Handle_Clicked" />
 			</StackLayout>
 			<fab:FloatingActionButton
 				x:Name="fabBtn"

@@ -33,6 +33,16 @@ namespace FABSample
                 Command = new Command(() => { this.UpdateButtonColor(Color.Blue); })
             };
 
+            var noShadow = new Button()
+            {
+                Text = "Change Shadow",
+                Command = new Command(() =>
+                {
+                    this.miniFab.HasShadow = !this.miniFab.HasShadow;
+                    this.normalFab.HasShadow = !this.normalFab.HasShadow;
+                })
+            };
+
             Button disable = null;
             disable = new Button()
             {
@@ -55,7 +65,8 @@ namespace FABSample
                         green,
                         red,
                         blue,
-                        disable
+                        disable,
+                        noShadow
                     }
                 },
                 xConstraint: Constraint.Constant(0),
