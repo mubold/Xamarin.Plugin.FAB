@@ -42,12 +42,9 @@ namespace FABSample
         {
             var normal = color;
             var disabled = color.MultiplyAlpha(0.25);
-            var pressed = color.MultiplyAlpha(0.8);
 
             fabBtn.NormalColor = normal;
             fabBtn.DisabledColor = disabled;
-            fabBtn.PressedColor = pressed;
         }
     }
 }
-

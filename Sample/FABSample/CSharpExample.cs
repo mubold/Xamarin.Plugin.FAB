@@ -67,6 +67,7 @@ namespace FABSample
             normalFab = new FloatingActionButton();
             normalFab.Source = "plus.png";
             normalFab.Size = FabSize.Normal;
+            normalFab.RippleColor = Color.Gray;
 
             layout.Children.Add(
                 normalFab,
@@ -79,6 +80,7 @@ namespace FABSample
             miniFab = new FloatingActionButton();
             miniFab.Source = "plus.png";
             miniFab.Size = FabSize.Mini;
+            miniFab.RippleColor = Color.Gray;
 
             layout.Children.Add(
                 miniFab,
@@ -111,15 +113,12 @@ namespace FABSample
         {
             var normal = color;
             var disabled = color.MultiplyAlpha(0.25);
-            var pressed = color.MultiplyAlpha(0.8);
 
             miniFab.NormalColor = normal;
             miniFab.DisabledColor = disabled;
-            miniFab.PressedColor = pressed;
 
             normalFab.NormalColor = normal;
             normalFab.DisabledColor = disabled;
-            normalFab.PressedColor = pressed;
         }
     }
 }

@@ -9,12 +9,18 @@ namespace FAB.iOS
 {
     public class MNFloatingActionButton : UIControl
     {
+        /// <summary>
+        /// Flags for hiding/showing shadow
+        /// </summary>
         public enum ShadowState
         {
             ShadowStateShown,
             ShadowStateHidden
         }
 
+        /// <summary>
+        /// FAB Size options.
+        /// </summary>
         public enum FABSize
         {
             Mini,
@@ -28,6 +34,10 @@ namespace FAB.iOS
 
         private FABSize size = FABSize.Normal;
 
+        /// <summary>
+        /// Size to render the FAB -- Normal or <ini
+        /// </summary>
+        /// <value>The size.</value>
         public FABSize Size
         {
             get { return size; }
@@ -43,6 +53,10 @@ namespace FAB.iOS
 
         UIImageView _centerImageView;
 
+        /// <summary>
+        /// The image to display int the center of the button
+        /// </summary>
+        /// <value>The center image view.</value>
         public UIImageView CenterImageView
         {
             get
@@ -62,7 +76,11 @@ namespace FAB.iOS
 
         UIColor _backgroundColor;
 
-        public UIColor BackgroundColor
+        /// <summary>
+        /// Background Color of the FAB
+        /// </summary>
+        /// <value>The color of the background.</value>
+        public new UIColor BackgroundColor
         {
             get
             {
@@ -76,26 +94,14 @@ namespace FAB.iOS
             }
         }
 
-        UIColor _pressedBackgroundColor;
-
-        public UIColor PressedBackgroundColor
-        { 
-            get { return _pressedBackgroundColor; }
-            set
-            {
-                _pressedBackgroundColor = value; 
-                this.UpdateBackground();
-            }
-        }
-
         UIColor _shadowColor;
 
         public UIColor ShadowColor
-        { 
+        {
             get { return _shadowColor; }
             set
             {
-                _shadowColor = value; 
+                _shadowColor = value;
                 this.UpdateBackground();
             }
         }
@@ -131,7 +137,7 @@ namespace FAB.iOS
             this.animationScale = 0.85f;
             this.shadowOpacity = 0.6f;
             this.shadowRadius = 1.5f;
-            
+
             this.CommonInit();
         }
 
@@ -142,36 +148,19 @@ namespace FAB.iOS
             this.animationScale = 0.85f;
             this.shadowOpacity = 0.6f;
             this.shadowRadius = 1.5f;
-            
+
             this.CommonInit();
         }
 
-        void CommonInit()
+        public override void LayoutSubviews()
         {
-//            this.UserInteractionEnabled = true;
+            base.LayoutSubviews();
 
-            this.BackgroundCircle = new UIView();
-
-            this.BackgroundColor = UIColor.Red.ColorWithAlpha(0.4f);
-            this.BackgroundColor = new UIColor(33.0f / 255.0f, 150.0f / 255.0f, 243.0f / 255.0f, 1.0f);
-            this.BackgroundCircle.BackgroundColor = this.BackgroundColor;
-            this.ShadowOpacity = shadowOpacity;
-            this.ShadowRadius = shadowRadius;
-            this.AnimationScale = animationScale;
-            this.AnimationDuration = animationDuration;
-
-            this.BackgroundCircle.AddSubview(this.CenterImageView);
-            this.AddSubview(this.BackgroundCircle);
-
-//            this.TouchDown += (sender, e) =>  {
-//                this.AnimateToSelectedState();
-//            };
-//            this.TouchUpInside += (sender, e) => {
-//                this.AnimateToDeselectedState();
-//            };
-//            this.TouchCancel += (sender, e) => {
-//                this.AnimateToDeselectedState();
-//            };
+            this.CenterImageView.Center = this.BackgroundCircle.Center;
+            if (!this.IsAnimating)
+            {
+                this.UpdateBackground();
+            }
         }
 
         public override void TouchesBegan(NSSet touches, UIEvent evt)
@@ -184,49 +173,59 @@ namespace FAB.iOS
 
         public override void TouchesEnded(NSSet touches, UIEvent evt)
         {
-//            base.TouchesEnded(touches, evt);
-
             this.AnimateToDeselectedState();
             this.SendActionForControlEvents(UIControlEvent.TouchUpInside);
         }
 
         public override void TouchesCancelled(NSSet touches, UIEvent evt)
         {
-//            base.TouchesCancelled(touches, evt);
-
             this.AnimateToDeselectedState();
             this.SendActionForControlEvents(UIControlEvent.TouchCancel);
         }
 
-        public void AnimateToSelectedState()
+        private void CommonInit()
+        {
+            this.BackgroundCircle = new UIView();
+
+            this.BackgroundColor = UIColor.Red.ColorWithAlpha(0.4f);
+            this.BackgroundColor = new UIColor(33.0f / 255.0f, 150.0f / 255.0f, 243.0f / 255.0f, 1.0f);
+            this.BackgroundCircle.BackgroundColor = this.BackgroundColor;
+            this.ShadowOpacity = shadowOpacity;
+            this.ShadowRadius = shadowRadius;
+            this.AnimationScale = animationScale;
+            this.AnimationDuration = animationDuration;
+
+            this.BackgroundCircle.AddSubview(this.CenterImageView);
+            this.AddSubview(this.BackgroundCircle);
+        }
+
+        private void AnimateToSelectedState()
         {
             this.IsAnimating = true;
             this.ToggleShadowAnimationToState(ShadowState.ShadowStateHidden);
             UIView.Animate(animationDuration, () =>
                 {
                     this.BackgroundCircle.Transform = CGAffineTransform.MakeScale(this.AnimationScale, this.AnimationScale);
-                    this.BackgroundCircle.BackgroundColor = this.PressedBackgroundColor;
                 }, () =>
                 {
                     this.IsAnimating = false;
                 });
         }
 
-        public void AnimateToDeselectedState()
+        private void AnimateToDeselectedState()
         {
             this.IsAnimating = true;
             this.ToggleShadowAnimationToState(ShadowState.ShadowStateShown);
             UIView.Animate(animationDuration, () =>
                 {
                     this.BackgroundCircle.Transform = CGAffineTransform.MakeScale(1.0f, 1.0f);
-                    this.BackgroundCircle.BackgroundColor = this.BackgroundColor;
                 }, () =>
                 {
                     this.IsAnimating = false;
                 });
         }
 
-        public void ToggleShadowAnimationToState(ShadowState state)
+        private void ToggleShadowAnimationToState(ShadowState state)
         {
             nfloat endOpacity = 0.0f;
             if (state == ShadowState.ShadowStateShown)
@@ -242,22 +241,11 @@ namespace FAB.iOS
             this.BackgroundCircle.Layer.ShadowOpacity = (float)endOpacity;
         }
 
-        public override void LayoutSubviews()
-        {
-            base.LayoutSubviews();
-
-            this.CenterImageView.Center = this.BackgroundCircle.Center;
-            if (!this.IsAnimating)
-            {
-                this.UpdateBackground();
-            }
-        }
-
         private void UpdateBackground()
         {
             this.BackgroundCircle.Frame = this.Bounds;
             this.BackgroundCircle.Layer.CornerRadius = this.Bounds.Size.Height / 2;
-            this.BackgroundCircle.Layer.ShadowColor = this.ShadowColor != null ? this.ShadowColor.CGColor : this.BackgroundColor.CGColor; 
+            this.BackgroundCircle.Layer.ShadowColor = this.ShadowColor != null ? this.ShadowColor.CGColor : this.BackgroundColor.CGColor;
             this.BackgroundCircle.Layer.ShadowOpacity = (float)this.ShadowOpacity;
             this.BackgroundCircle.Layer.ShadowRadius = this.ShadowRadius;
             this.BackgroundCircle.Layer.ShadowOffset = new CGSize(1.0, 1.0);

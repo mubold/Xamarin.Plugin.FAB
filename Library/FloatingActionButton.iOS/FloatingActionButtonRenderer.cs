@@ -104,7 +104,7 @@ namespace FAB.iOS
         private void SetBackgroundColors()
         {
             this.Control.BackgroundColor = this.Element.NormalColor.ToUIColor();
-            this.Control.PressedBackgroundColor = this.Element.PressedColor.ToUIColor();
+            //this.Control.PressedBackgroundColor = this.Element.PressedColor.ToUIColor();
         }
 
         private void SetHasShadow()
@@ -124,7 +124,6 @@ namespace FAB.iOS
             if (this.Control.Enabled == false)
             {
                 this.Control.BackgroundColor = this.Element.DisabledColor.ToUIColor();
-                this.Control.PressedBackgroundColor = this.Element.DisabledColor.ToUIColor();
             }
             else
             {
