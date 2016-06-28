@@ -12,6 +12,7 @@ namespace FABSample
 
             tabbed.Children.Add(new NavigationPage(new CSharpExample()) { Icon = "csharp.png" });
             tabbed.Children.Add(new NavigationPage(new XamlExample()) { Icon = "xml.png" });
+            tabbed.Children.Add(new NavigationPage(new ListExample()) { Icon = "list.png" });
 
             this.MainPage = tabbed;
         }

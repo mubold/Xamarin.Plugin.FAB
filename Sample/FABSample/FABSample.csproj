@@ -38,6 +38,9 @@
       <DependentUpon>XamlExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.cs" />
+    <Compile Include="ListExample.xaml.cs">
+      <DependentUpon>ListExample.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -61,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XamlExample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListExample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

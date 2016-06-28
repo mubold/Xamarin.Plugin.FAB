@@ -22,6 +22,8 @@ namespace FAB.Droid
 
             if (this.Control == null)
             {
+                this.ViewGroup.SetClipChildren(false);
+                this.ViewGroup.SetClipToPadding(false);
                 this.UpdateControlForSize();
 
                 this.UpdateStyle();
@@ -75,6 +77,13 @@ namespace FAB.Droid
             }
 
             base.Dispose(disposing);
+        }
+
+        public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
+        {
+            double value = Utils.GetDensityIndependentPixels(this.Element.Size == FAB.Forms.FabSize.Normal ? 56 : 40);
+
+            return new SizeRequest(new Size(value, value));
         }
 
         private void UpdateControlForSize()

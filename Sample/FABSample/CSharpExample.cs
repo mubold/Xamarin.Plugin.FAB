@@ -12,6 +12,7 @@ namespace FABSample
         public CSharpExample()
         {
             this.Title = "C# Example";
+            this.BackgroundColor = Color.White;
 
             var layout = new RelativeLayout();
 

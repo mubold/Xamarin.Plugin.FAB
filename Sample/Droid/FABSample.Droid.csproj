@@ -110,6 +110,7 @@
     <AndroidResource Include="Resources\layout\toolbar.axml" />
     <AndroidResource Include="Resources\drawable\csharp.png" />
     <AndroidResource Include="Resources\drawable\xml.png" />
+    <AndroidResource Include="Resources\drawable\list.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FABSample\FABSample.csproj">

@@ -5,7 +5,8 @@
 	xmlns:fab="clr-namespace:FAB.Forms;assembly=FAB.Forms"
 	x:Class="FABSample.XamlExample"
 	Title="Xaml Example"
-	Padding="15">
+	Padding="15"
+	BackgroundColor="White">
 	<ContentPage.Content>
 		<RelativeLayout>
 			<StackLayout

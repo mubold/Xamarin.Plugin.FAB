@@ -10,8 +10,8 @@ namespace FAB.Forms
 
         public static readonly BindableProperty NormalColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.NormalColor, Color.Blue);
 
-        [Obsolete]
-        public static readonly BindableProperty PressedColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.PressedColor, Color.Blue.MultiplyAlpha(0.1));
+        [Obsolete("Use RippleColorProperty instead")]
+        public static readonly BindableProperty PressedColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.RippleColor, Color.Gray);
 
         public static readonly BindableProperty RippleColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.RippleColor, Color.Gray);
 
@@ -39,11 +39,11 @@ namespace FAB.Forms
             set { this.SetValue(NormalColorProperty, value); }
         }
 
-        [Obsolete]
+        [Obsolete("Use RippleColor instead")]
         public Color PressedColor
         {
-            get { return (Color)this.GetValue(PressedColorProperty); }
-            set { this.SetValue(PressedColorProperty, value); }
+            get { return (Color)this.GetValue(RippleColorProperty); }
+            set { this.SetValue(RippleColorProperty, value); }
         }
 
         public Color RippleColor
@@ -64,18 +64,6 @@ namespace FAB.Forms
             set { this.SetValue(HasShadowProperty, value); }
         }
 
-        public new double WidthRequest
-        {
-            get { return this.Size == FabSize.Normal ? 56 : 40; }
-            set { throw new NotImplementedException(); }
-        }
-
-        public new double HeightRequest
-        {
-            get { return this.Size == FabSize.Normal ? 56 : 40; }
-            set { throw new NotImplementedException(); }
-        }
-
         [TypeConverter(typeof(ImageSourceConverter))]
         public ImageSource Source
         {
@@ -93,10 +81,6 @@ namespace FAB.Forms
         {
             get { return (object)this.GetValue(CommandParameterProperty); }
             set { this.SetValue(CommandParameterProperty, value); }
-        }
-
-        public FloatingActionButton()
-        {
         }
 
         internal void SendClicked()
