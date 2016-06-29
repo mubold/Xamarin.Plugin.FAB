@@ -2,42 +2,30 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>FAB.Forms</id>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
     <title>Floating Action Button For Xamarin.Forms</title>
     <authors>Drew Frisk</authors>
     <owners>Drew Frisk</owners>
-    <licenseUrl>https://github.com/keannan5390/xamarin-plugins/blob/master/LICENSE.txt</licenseUrl>
-    <projectUrl>https://github.com/keannan5390/xamarin-plugins</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/keannan5390/xamarin-plugins/master/FloatingActionButton/Library/assets/icon.png</iconUrl>
+    <licenseUrl>https://raw.githubusercontent.com/keannan5390/Xamarin.Plugin.FAB/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/keannan5390/Xamarin.Plugin.FAB</projectUrl>
+    <iconUrl>https://github.com/keannan5390/Xamarin.Plugin.FAB/blob/master/Library/assets/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
     Custom control for your Xamarin.Forms project to render a floating action button in projects that target Android or iOS
     </description>
     <summary>Creates a Floating Action Button for Xamarin.Forms</summary>
     <tags>xamarin, pcl, xam.pcl, floating action button, fab, android, xamarin.forms, ios</tags>
-    <dependencies>
-           <group targetFramework="MonoAndroid10">
-               <dependency id="Xamarin.Forms" version="2.3.0.49"/>
-           </group>
-           <group targetFramework="MonoTouch10">
-               <dependency id="Xamarin.Forms" version="2.2.0.45"/>
-           </group>
-           <group targetFramework="Xamarin.iOS10">
-               <dependency id="Xamarin.Forms" version="2.2.0.45"/>
-           </group>
-           <group targetFramework="portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10">
-               <dependency id="Xamarin.Forms" version="2.2.0.45"/>
-           </group>
-       </dependencies>
-    <releaseNotes>
-	     [2.1.0]
-	     - Use FloatingActionButton from support design library
-	     - PressedColor property is now deprecated, use RippleColor instead
-         [2.0.0]
-         - Fixed issues with iOS assembly references
-         - Fixed issues with click event
-         - Fixed issues with image display in iOS
-         - Added proper support for color specifications
+	<releaseNotes>
+		[2.1.1]
+		- Added support for profile 111
+		[2.1.0]
+		- Use FloatingActionButton from support design library
+		- PressedColor property is now deprecated, use RippleColor instead
+		[2.0.0]
+		- Fixed issues with iOS assembly references
+		- Fixed issues with click event
+		- Fixed issues with image display in iOS
+		- Added proper support for color specifications
      </releaseNotes>
   </metadata>
    <files>
@@ -56,7 +44,10 @@
         <file src="/Library/FloatingActionButton.iOS/bin/Release/FAB.iOS.dll" target="lib/Xamarin.iOS10/FAB.iOS.dll" />
         <file src="/Library/FloatingActionButton.iOS/bin/Release/FAB.iOS.xml" target="lib/Xamarin.iOS10/FAB.iOS.xml" />
         
-        <file src="/Library/FloatingActionButton.Forms/bin/Release/FAB.Forms.dll" target="lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10/FAB.Forms.dll" />
-        <file src="/Library/FloatingActionButton.Forms/bin/Release/FAB.Forms.xml" target="lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10/FAB.Forms.xml" />
+        <file src="/Library/FloatingActionButton.Forms/Profile78/bin/Release/FAB.Forms.dll" target="lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10/FAB.Forms.dll" />
+        <file src="/Library/FloatingActionButton.Forms/Profile78/bin/Release/FAB.Forms.xml" target="lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10/FAB.Forms.xml" />
+
+        <file src="/Library/FloatingActionButton.Forms/Profile111/bin/Release/FAB.Forms.dll" target="lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/FAB.Forms.dll" />
+        <file src="/Library/FloatingActionButton.Forms/Profile111/bin/Release/FAB.Forms.xml" target="lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/FAB.Forms.xml" />
     </files>
 </package>
