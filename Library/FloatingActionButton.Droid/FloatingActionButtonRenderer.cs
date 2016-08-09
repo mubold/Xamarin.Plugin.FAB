@@ -126,11 +126,10 @@ namespace FAB.Droid
         {
             if (this.Element.HasShadow)
             {
-                this.Control.Elevation = 20;
+                ViewCompat.SetElevation(this.Control, 20);
             }
-            else
-            {
-                this.Control.Elevation = 0;
+            else {
+                ViewCompat.SetElevation(this.Control, 0);
             }
         }
 
