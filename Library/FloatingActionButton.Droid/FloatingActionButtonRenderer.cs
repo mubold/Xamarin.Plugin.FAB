@@ -9,6 +9,7 @@ using FAB.Forms;
 using Android.Views;
 using Widget = Android.Support.Design.Widget;
 using Android.Content.Res;
+using Android.Support.V4.View;
 
 [assembly: ExportRenderer(typeof(FAB.Forms.FloatingActionButton), typeof(FAB.Droid.FloatingActionButtonRenderer))]
 
