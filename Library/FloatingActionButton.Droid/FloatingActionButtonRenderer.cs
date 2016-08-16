@@ -9,6 +9,7 @@ using FAB.Forms;
 using Android.Views;
 using Widget = Android.Support.Design.Widget;
 using Android.Content.Res;
+using Android.Support.V4.View;
 
 [assembly: ExportRenderer(typeof(FAB.Forms.FloatingActionButton), typeof(FAB.Droid.FloatingActionButtonRenderer))]
 
@@ -126,11 +127,10 @@ namespace FAB.Droid
         {
             if (this.Element.HasShadow)
             {
-                this.Control.Elevation = 20;
+                ViewCompat.SetElevation(this.Control, 20);
             }
-            else
-            {
-                this.Control.Elevation = 0;
+            else {
+                ViewCompat.SetElevation(this.Control, 0);
             }
         }
 
