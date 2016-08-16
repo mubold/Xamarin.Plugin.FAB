@@ -138,26 +138,40 @@ namespace FAB.iOS
 
 		private async static void SetImageAsync(ImageSource source, MNFloatingActionButton targetButton)
 		{
-            var widthRequest = targetButton.Frame.Width;
-            var heightRequest = targetButton.Frame.Height;
+            if (source != null)
+            {
+                var widthRequest = targetButton.Frame.Width;
+                var heightRequest = targetButton.Frame.Height;
 
-			var handler = GetHandler(source);
-			using (UIImage image = await handler.LoadImageAsync(source))
-			{
-				UIGraphics.BeginImageContext(new CoreGraphics.CGSize(widthRequest, heightRequest));
-				image.Draw(new CoreGraphics.CGRect(0, 0, widthRequest, heightRequest));
-				using (var resultImage = UIGraphics.GetImageFromCurrentImageContext())
-				{
-					if (resultImage != null)
-					{
-						UIGraphics.EndImageContext();
-						using (var resizableImage = resultImage.CreateResizableImage(new UIEdgeInsets(0f, 0f, widthRequest, heightRequest)))
-						{
-							targetButton.CenterImageView.Image = resizableImage.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-						}
-					}
-				}
-			}
+                var handler = GetHandler(source);
+                using (UIImage image = await handler.LoadImageAsync(source))
+                {
+                    if(image != null)
+                    {
+                        UIGraphics.BeginImageContext(new CoreGraphics.CGSize(widthRequest, heightRequest));
+                        image.Draw(new CoreGraphics.CGRect(0, 0, widthRequest, heightRequest));
+                        using (var resultImage = UIGraphics.GetImageFromCurrentImageContext())
+                        {
+                            if (resultImage != null)
+                            {
+                                UIGraphics.EndImageContext();
+                                using (var resizableImage = resultImage.CreateResizableImage(new UIEdgeInsets(0f, 0f, widthRequest, heightRequest)))
+                                {
+                                    targetButton.CenterImageView.Image = resizableImage.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+                                }
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        targetButton.CenterImageView.Image = null;
+                    }
+                }
+            }
+            else
+            {
+                targetButton.CenterImageView.Image = null;
+            }
 		}
 	}
 }

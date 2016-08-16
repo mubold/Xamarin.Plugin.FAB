@@ -103,9 +103,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\style.xml" />
-    <AndroidResource Include="Resources\values-v21\style.xml" />
     <AndroidResource Include="Resources\layout\tabs.axml" />
     <AndroidResource Include="Resources\layout\toolbar.axml" />
     <AndroidResource Include="Resources\drawable\csharp.png" />
@@ -132,7 +130,6 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
-    <Folder Include="Resources\values-v21\" />
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
