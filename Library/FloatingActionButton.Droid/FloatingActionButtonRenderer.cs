@@ -80,13 +80,6 @@ namespace FAB.Droid
             base.Dispose(disposing);
         }
 
-        public override SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint)
-        {
-            double value = Utils.GetDensityIndependentPixels(this.Element.Size == FAB.Forms.FabSize.Normal ? 56 : 40);
-
-            return new SizeRequest(new Size(value, value));
-        }
-
         private void UpdateControlForSize()
         {
             LayoutInflater inflater = (LayoutInflater)this.Context.GetSystemService(Android.Content.Context.LayoutInflaterService);
