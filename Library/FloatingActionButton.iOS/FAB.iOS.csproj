@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FloatingActionButtonRenderer.cs" />
     <Compile Include="MNFloatingActionButton.cs" />
+    <Compile Include="LinkerPleaseInclude.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FloatingActionButton.Forms\Profile78\FAB.Forms.Profile78.csproj">
