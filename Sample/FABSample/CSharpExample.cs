@@ -44,6 +44,16 @@ namespace FABSample
                 })
             };
 
+            var toggleAnimationOnSelection = new Button()
+            {
+                Text = "Toggle Animation on Selection",
+                Command = new Command(() =>
+                {
+                    this.miniFab.AnimateOnSelection = !this.miniFab.AnimateOnSelection;
+                    this.normalFab.AnimateOnSelection = !this.normalFab.AnimateOnSelection;
+                })
+            };
+
             Button disable = null;
             disable = new Button()
             {
@@ -67,7 +77,8 @@ namespace FABSample
                         red,
                         blue,
                         disable,
-                        noShadow
+                        noShadow,
+                        toggleAnimationOnSelection
                     }
                 },
                 xConstraint: Constraint.Constant(0),

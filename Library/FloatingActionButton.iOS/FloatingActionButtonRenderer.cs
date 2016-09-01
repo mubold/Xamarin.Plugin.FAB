@@ -17,7 +17,7 @@ namespace FAB.iOS
 
 			if (this.Control == null)
 			{
-				var fab = new MNFloatingActionButton();
+                var fab = new MNFloatingActionButton(this.Element.AnimateOnSelection);
 				fab.Frame = new CoreGraphics.CGRect(0, 0, 24, 24);
 
 				this.SetNativeControl(fab);
@@ -61,6 +61,10 @@ namespace FAB.iOS
             else if (e.PropertyName == FloatingActionButton.IsEnabledProperty.PropertyName)
             {
                 this.UpdateEnabled();
+            }
+            else if (e.PropertyName == FloatingActionButton.AnimateOnSelectionProperty.PropertyName)
+            {
+                this.UpdateAnimateOnSelection();
             }
             else
             {
@@ -129,6 +133,11 @@ namespace FAB.iOS
             {
                 this.SetBackgroundColors();
             }
+        }
+
+        private void UpdateAnimateOnSelection()
+        {
+            this.Control.AnimateOnSelection = this.Element.AnimateOnSelection;
         }
 
         private void Fab_TouchUpInside(object sender, EventArgs e)
