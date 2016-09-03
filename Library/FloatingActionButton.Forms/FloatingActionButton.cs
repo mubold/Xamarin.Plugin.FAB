@@ -91,7 +91,7 @@ namespace FAB.Forms
             set { this.SetValue(AnimateOnSelectionProperty, value); }
         }
 
-        internal void SendClicked()
+        internal virtual void SendClicked()
         {
             var param = this.CommandParameter;
 

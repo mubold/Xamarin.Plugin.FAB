@@ -34,6 +34,9 @@
     <Compile Include="..\FloatingActionButton.cs" />
     <Compile Include="..\FabSize.cs" />
     <Compile Include="..\ImageSourceConverter.cs" />
+    <Compile Include="..\FloatingActionToggleButton.cs">
+      <Link>FloatingActionToggleButton.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

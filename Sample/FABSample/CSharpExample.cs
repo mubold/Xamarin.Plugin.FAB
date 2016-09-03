@@ -9,6 +9,9 @@ namespace FABSample
         private FloatingActionButton miniFab;
         private FloatingActionButton normalFab;
 
+        private FloatingActionToggleButton miniToggleFab;
+        private FloatingActionToggleButton normalToggleFab;
+
         public CSharpExample()
         {
             this.Title = "C# Example";
@@ -127,6 +130,56 @@ namespace FABSample
             miniFab.Clicked += (sender, e) =>
             {
                 this.DisplayAlert("Floating Action Button", "You clicked the mini FAB!", "Awesome!");
+            };
+
+
+            normalToggleFab = new FloatingActionToggleButton();
+            normalToggleFab.CheckedImage = "csharp.png";
+            normalToggleFab.UnCheckedImage = "xml.png";
+            normalToggleFab.UnCheckedColor = Color.Gray;
+            normalToggleFab.AnimateOnSelection = false;
+            normalToggleFab.Size = FabSize.Normal;
+            normalToggleFab.RippleColor = Color.Gray;
+
+            layout.Children.Add(
+                normalToggleFab,
+                xConstraint: Constraint.RelativeToParent((parent) => { return (parent.Width - normalToggleFab.Width) - 116; }),
+                yConstraint: Constraint.RelativeToParent((parent) => { return (parent.Height - normalToggleFab.Height) - 16; })
+            );
+
+            normalToggleFab.SizeChanged += (sender, args) => { layout.ForceLayout(); };
+
+            miniToggleFab = new FloatingActionToggleButton();
+            miniToggleFab.CheckedImage = "csharp.png";
+            miniToggleFab.UnCheckedImage = "xml.png";
+            miniToggleFab.CheckedColor = Color.Green;
+            miniToggleFab.UnCheckedColor = Color.Yellow;
+            miniToggleFab.AnimateOnSelection = false;
+            miniToggleFab.Size = FabSize.Mini;
+            miniToggleFab.RippleColor = Color.Gray;
+
+            layout.Children.Add(
+                miniToggleFab,
+                xConstraint: Constraint.RelativeToParent((parent) =>
+                {
+                    return (parent.Width - miniToggleFab.Width) - 116;
+                }),
+                yConstraint: Constraint.RelativeToView(normalFab, (parent, view) =>
+                {
+                    return (view.Y - miniFab.Height) - 16;
+                })
+            );
+            miniToggleFab.SizeChanged += (sender, args) => { layout.ForceLayout(); };
+
+
+            normalToggleFab.Clicked += (sender, e) =>
+            {
+                this.DisplayAlert("Floating Action Button", "You clicked the normal toggle FAB!", "Awesome!");
+            };
+
+            miniToggleFab.Clicked += (sender, e) =>
+            {
+                this.DisplayAlert("Floating Action Button", "You clicked the mini toggle FAB!", "Awesome!");
             };
 
             this.Content = layout;
