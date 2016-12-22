@@ -118,13 +118,18 @@ namespace FAB.Droid
 
         private void SetHasShadow()
         {
-            if (this.Element.HasShadow)
+            try
             {
-                ViewCompat.SetElevation(this.Control, 20);
+                if (this.Element.HasShadow)
+                {
+                    ViewCompat.SetElevation(this.Control, 20);
+                }
+                else
+                {
+                    ViewCompat.SetElevation(this.Control, 0);
+                }
             }
-            else {
-                ViewCompat.SetElevation(this.Control, 0);
-            }
+            catch { }
         }
 
         private void SetImage()
