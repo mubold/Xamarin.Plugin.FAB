@@ -114,7 +114,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\fab_shadow_mini.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\fab_shadow.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\fab_shadow_mini.png" />
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
