@@ -1,5 +1,13 @@
 # Floating Action Button for Xamarin.Forms
 
+ - - - -
+
+## I'm not actively supporting this library right now. 
+
+It needs a fair amount for work for updating and I haven't had the time to do so as of late.
+
+ - - - -
+
 **This library requires AppCompat v21+**
 
 A Xamarin.Forms wrapper for basic functionality of https://github.com/jamesmontemagno/FloatingActionButton-for-Xamarin.Android
