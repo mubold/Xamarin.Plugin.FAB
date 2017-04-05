@@ -140,7 +140,7 @@ namespace FAB.Droid
 
                 (this.Context as Activity).RunOnUiThread(() =>
                 {
-                    this.Control.SetImageBitmap(bitmap);
+                    this.Control?.SetImageBitmap(bitmap);
                 });
             });
         }
