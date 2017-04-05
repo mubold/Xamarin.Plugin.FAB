@@ -42,7 +42,7 @@ namespace FAB.Droid
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == FloatingActionButton.SourceProperty.PropertyName)
+            if (e.PropertyName == FloatingActionButton.SizeProperty.PropertyName)
             {
                 this.UpdateControlForSize();
             }

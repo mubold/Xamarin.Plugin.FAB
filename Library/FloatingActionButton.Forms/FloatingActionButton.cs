@@ -25,6 +25,8 @@ namespace FAB.Forms
 
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create<FloatingActionButton, object>(mn => mn.CommandParameter, null);
 
+        public static readonly BindableProperty AnimateOnSelectionProperty = BindableProperty.Create<FloatingActionButton, bool>(mn => mn.AnimateOnSelection, true);
+
         public event EventHandler<EventArgs> Clicked;
 
         public FabSize Size
@@ -83,7 +85,13 @@ namespace FAB.Forms
             set { this.SetValue(CommandParameterProperty, value); }
         }
 
-        internal void SendClicked()
+        public bool AnimateOnSelection
+        {
+            get { return (bool)this.GetValue(AnimateOnSelectionProperty); }
+            set { this.SetValue(AnimateOnSelectionProperty, value); }
+        }
+
+        internal virtual void SendClicked()
         {
             var param = this.CommandParameter;
 
