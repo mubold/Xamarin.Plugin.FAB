@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>FAB.Forms</id>
-    <version>2.2.0</version>
+    <version>2.2.0-pre1</version>
     <title>Floating Action Button For Xamarin.Forms</title>
     <authors>Drew Frisk</authors>
     <owners>Drew Frisk</owners>

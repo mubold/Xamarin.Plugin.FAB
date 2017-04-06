@@ -43,7 +43,7 @@ namespace FAB.iOS
                 this.SetSize();
             }
             else if (e.PropertyName == FloatingActionButton.NormalColorProperty.PropertyName ||
-                     e.PropertyName == FloatingActionButton.PressedColorProperty.PropertyName ||
+                     e.PropertyName == FloatingActionButton.RippleColorProperty.PropertyName ||
                      e.PropertyName == FloatingActionButton.DisabledColorProperty.PropertyName)
             {
                 this.SetBackgroundColors();
@@ -108,7 +108,7 @@ namespace FAB.iOS
         private void SetBackgroundColors()
         {
             this.Control.BackgroundColor = this.Element.NormalColor.ToUIColor();
-            //this.Control.PressedBackgroundColor = this.Element.PressedColor.ToUIColor();
+            //this.Control.PressedBackgroundColor = this.Element.Ripplecolor.ToUIColor();
         }
 
         private void SetHasShadow()

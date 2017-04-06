@@ -47,7 +47,7 @@ namespace FAB.Droid
                 this.UpdateControlForSize();
             }
             else if (e.PropertyName == FloatingActionButton.NormalColorProperty.PropertyName ||
-                     e.PropertyName == FloatingActionButton.PressedColorProperty.PropertyName ||
+                     e.PropertyName == FloatingActionButton.RippleColorProperty.PropertyName ||
                      e.PropertyName == FloatingActionButton.DisabledColorProperty.PropertyName)
             {
                 this.SetBackgroundColors();

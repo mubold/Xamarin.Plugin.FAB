@@ -10,9 +10,6 @@ namespace FAB.Forms
 
         public static readonly BindableProperty NormalColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.NormalColor, Color.Blue);
 
-        [Obsolete("Use RippleColorProperty instead")]
-        public static readonly BindableProperty PressedColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.RippleColor, Color.Gray);
-
         public static readonly BindableProperty RippleColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.RippleColor, Color.Gray);
 
         public static readonly BindableProperty DisabledColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.DisabledColor, Color.Gray);
@@ -39,13 +36,6 @@ namespace FAB.Forms
         {
             get { return (Color)this.GetValue(NormalColorProperty); }
             set { this.SetValue(NormalColorProperty, value); }
-        }
-
-        [Obsolete("Use RippleColor instead")]
-        public Color PressedColor
-        {
-            get { return (Color)this.GetValue(RippleColorProperty); }
-            set { this.SetValue(RippleColorProperty, value); }
         }
 
         public Color RippleColor
