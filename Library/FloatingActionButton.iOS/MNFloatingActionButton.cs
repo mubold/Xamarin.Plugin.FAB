@@ -130,24 +130,28 @@ namespace FAB.iOS
 
         public UIView BackgroundCircle { get; private set; }
 
-        public MNFloatingActionButton()
+        public bool AnimateOnSelection { get; set; }
+
+        public MNFloatingActionButton(bool animateOnSelection)
             : base()
         {
             this.animationDuration = 0.05f;
             this.animationScale = 0.85f;
             this.shadowOpacity = 0.6f;
             this.shadowRadius = 1.5f;
+            this.AnimateOnSelection = animateOnSelection;
 
             this.CommonInit();
         }
 
-        public MNFloatingActionButton(CGRect frame)
+        public MNFloatingActionButton(CGRect frame, bool animateOnSelection)
             : base(frame)
         {
             this.animationDuration = 0.05f;
             this.animationScale = 0.85f;
             this.shadowOpacity = 0.6f;
             this.shadowRadius = 1.5f;
+            this.AnimateOnSelection = animateOnSelection;
 
             this.CommonInit();
         }
@@ -201,28 +205,34 @@ namespace FAB.iOS
 
         private void AnimateToSelectedState()
         {
-            this.IsAnimating = true;
-            this.ToggleShadowAnimationToState(ShadowState.ShadowStateHidden);
-            UIView.Animate(animationDuration, () =>
-                {
-                    this.BackgroundCircle.Transform = CGAffineTransform.MakeScale(this.AnimationScale, this.AnimationScale);
-                }, () =>
-                {
-                    this.IsAnimating = false;
+            if (this.AnimateOnSelection)
+            {
+                this.IsAnimating = true;
+                this.ToggleShadowAnimationToState(ShadowState.ShadowStateHidden);
+                UIView.Animate(animationDuration, () =>
+                    {
+                        this.BackgroundCircle.Transform = CGAffineTransform.MakeScale(this.AnimationScale, this.AnimationScale);
+                    }, () =>
+                    {
+                        this.IsAnimating = false;
                 });
+            }
         }
 
         private void AnimateToDeselectedState()
         {
-            this.IsAnimating = true;
-            this.ToggleShadowAnimationToState(ShadowState.ShadowStateShown);
-            UIView.Animate(animationDuration, () =>
-                {
-                    this.BackgroundCircle.Transform = CGAffineTransform.MakeScale(1.0f, 1.0f);
-                }, () =>
-                {
-                    this.IsAnimating = false;
+            if (this.AnimateOnSelection)
+            {
+                this.IsAnimating = true;
+                this.ToggleShadowAnimationToState(ShadowState.ShadowStateShown);
+                UIView.Animate(animationDuration, () =>
+                    {
+                        this.BackgroundCircle.Transform = CGAffineTransform.MakeScale(1.0f, 1.0f);
+                    }, () =>
+                    {
+                        this.IsAnimating = false;
                 });
+            }
         }
 
         private void ToggleShadowAnimationToState(ShadowState state)

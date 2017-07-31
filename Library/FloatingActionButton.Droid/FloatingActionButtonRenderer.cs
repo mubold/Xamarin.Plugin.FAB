@@ -42,12 +42,12 @@ namespace FAB.Droid
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == FloatingActionButton.SourceProperty.PropertyName)
+            if (e.PropertyName == FloatingActionButton.SizeProperty.PropertyName)
             {
                 this.UpdateControlForSize();
             }
             else if (e.PropertyName == FloatingActionButton.NormalColorProperty.PropertyName ||
-                     e.PropertyName == FloatingActionButton.PressedColorProperty.PropertyName ||
+                     e.PropertyName == FloatingActionButton.RippleColorProperty.PropertyName ||
                      e.PropertyName == FloatingActionButton.DisabledColorProperty.PropertyName)
             {
                 this.SetBackgroundColors();
@@ -113,7 +113,14 @@ namespace FAB.Droid
         private void SetBackgroundColors()
         {
             this.Control.BackgroundTintList = ColorStateList.ValueOf(this.Element.NormalColor.ToAndroid());
-            this.Control.SetRippleColor(this.Element.RippleColor.ToAndroid());
+            try
+            {
+                this.Control.SetRippleColor(this.Element.RippleColor.ToAndroid());
+            }
+            catch (MissingMethodException)
+            {
+                // ignore
+            }
         }
 
         private void SetHasShadow()
@@ -140,7 +147,7 @@ namespace FAB.Droid
 
                 (this.Context as Activity).RunOnUiThread(() =>
                 {
-                    this.Control.SetImageBitmap(bitmap);
+                    this.Control?.SetImageBitmap(bitmap);
                 });
             });
         }

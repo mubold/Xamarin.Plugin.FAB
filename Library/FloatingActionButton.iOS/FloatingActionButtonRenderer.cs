@@ -17,7 +17,7 @@ namespace FAB.iOS
 
 			if (this.Control == null)
 			{
-				var fab = new MNFloatingActionButton();
+                var fab = new MNFloatingActionButton(this.Element.AnimateOnSelection);
 				fab.Frame = new CoreGraphics.CGRect(0, 0, 24, 24);
 
 				this.SetNativeControl(fab);
@@ -38,12 +38,12 @@ namespace FAB.iOS
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == FloatingActionButton.SourceProperty.PropertyName)
+            if (e.PropertyName == FloatingActionButton.SizeProperty.PropertyName)
             {
                 this.SetSize();
             }
             else if (e.PropertyName == FloatingActionButton.NormalColorProperty.PropertyName ||
-                     e.PropertyName == FloatingActionButton.PressedColorProperty.PropertyName ||
+                     e.PropertyName == FloatingActionButton.RippleColorProperty.PropertyName ||
                      e.PropertyName == FloatingActionButton.DisabledColorProperty.PropertyName)
             {
                 this.SetBackgroundColors();
@@ -61,6 +61,10 @@ namespace FAB.iOS
             else if (e.PropertyName == FloatingActionButton.IsEnabledProperty.PropertyName)
             {
                 this.UpdateEnabled();
+            }
+            else if (e.PropertyName == FloatingActionButton.AnimateOnSelectionProperty.PropertyName)
+            {
+                this.UpdateAnimateOnSelection();
             }
             else
             {
@@ -104,7 +108,7 @@ namespace FAB.iOS
         private void SetBackgroundColors()
         {
             this.Control.BackgroundColor = this.Element.NormalColor.ToUIColor();
-            //this.Control.PressedBackgroundColor = this.Element.PressedColor.ToUIColor();
+            //this.Control.PressedBackgroundColor = this.Element.Ripplecolor.ToUIColor();
         }
 
         private void SetHasShadow()
@@ -129,6 +133,11 @@ namespace FAB.iOS
             {
                 this.SetBackgroundColors();
             }
+        }
+
+        private void UpdateAnimateOnSelection()
+        {
+            this.Control.AnimateOnSelection = this.Element.AnimateOnSelection;
         }
 
         private void Fab_TouchUpInside(object sender, EventArgs e)

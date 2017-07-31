@@ -10,9 +10,6 @@ namespace FAB.Forms
 
         public static readonly BindableProperty NormalColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.NormalColor, Color.Blue);
 
-        [Obsolete("Use RippleColorProperty instead")]
-        public static readonly BindableProperty PressedColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.RippleColor, Color.Gray);
-
         public static readonly BindableProperty RippleColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.RippleColor, Color.Gray);
 
         public static readonly BindableProperty DisabledColorProperty = BindableProperty.Create<FloatingActionButton, Color>(mn => mn.DisabledColor, Color.Gray);
@@ -24,6 +21,8 @@ namespace FAB.Forms
         public static readonly BindableProperty CommandProperty = BindableProperty.Create<FloatingActionButton, ICommand>(mn => mn.Command, null, propertyChanged: HandleCommandChanged);
 
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create<FloatingActionButton, object>(mn => mn.CommandParameter, null);
+
+        public static readonly BindableProperty AnimateOnSelectionProperty = BindableProperty.Create<FloatingActionButton, bool>(mn => mn.AnimateOnSelection, true);
 
         public event EventHandler<EventArgs> Clicked;
 
@@ -37,13 +36,6 @@ namespace FAB.Forms
         {
             get { return (Color)this.GetValue(NormalColorProperty); }
             set { this.SetValue(NormalColorProperty, value); }
-        }
-
-        [Obsolete("Use RippleColor instead")]
-        public Color PressedColor
-        {
-            get { return (Color)this.GetValue(RippleColorProperty); }
-            set { this.SetValue(RippleColorProperty, value); }
         }
 
         public Color RippleColor
@@ -83,7 +75,13 @@ namespace FAB.Forms
             set { this.SetValue(CommandParameterProperty, value); }
         }
 
-        internal void SendClicked()
+        public bool AnimateOnSelection
+        {
+            get { return (bool)this.GetValue(AnimateOnSelectionProperty); }
+            set { this.SetValue(AnimateOnSelectionProperty, value); }
+        }
+
+        internal virtual void SendClicked()
         {
             var param = this.CommandParameter;
 

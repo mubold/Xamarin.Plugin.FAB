@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>FAB.Forms</id>
-    <version>2.1.2</version>
+    <version>2.2.0-pre1</version>
     <title>Floating Action Button For Xamarin.Forms</title>
     <authors>Drew Frisk</authors>
     <owners>Drew Frisk</owners>
@@ -16,6 +16,9 @@
     <summary>Creates a Floating Action Button for Xamarin.Forms</summary>
     <tags>xamarin, pcl, xam.pcl, floating action button, fab, android, xamarin.forms, ios</tags>
 	<releaseNotes>
+		[2.2.0]
+		- Some bug fixes
+		- Other enhancements (see change log in github for details)
         [2.1.2]
 		- Fixed crash on iOS when FAB image source didn't exist
 		- Compatibility issue fixes for older versions of Android 
