@@ -112,7 +112,8 @@ namespace FAB.Droid
 
         private void SetBackgroundColors()
         {
-            this.Control.BackgroundTintList = ColorStateList.ValueOf(this.Element.NormalColor.ToAndroid());
+			ViewCompat.SetBackgroundTintList(this.Control, ColorStateList.ValueOf(this.Element.NormalColor.ToAndroid()));
+
             try
             {
                 this.Control.RippleColor = this.Element.RippleColor.ToAndroid();
@@ -158,7 +159,7 @@ namespace FAB.Droid
 
             if (this.Control.Enabled == false)
             {
-                this.Control.BackgroundTintList = ColorStateList.ValueOf(this.Element.DisabledColor.ToAndroid());
+	            ViewCompat.SetBackgroundTintList(this.Control, ColorStateList.ValueOf(this.Element.DisabledColor.ToAndroid()));
             }
             else
             {
